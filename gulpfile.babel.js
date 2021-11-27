@@ -28,7 +28,9 @@ const requireDir = require("require-dir"),
             dist: "./dist/js/",
             watch: [
                 "./src/blocks/**/*.js",
-                "./src/js/**/*.js"
+                "./src/js/**/*.js",
+                "./src/blocks/**/*.vue",
+                "./src/js/**/*.vue",
             ]
         },
         images: {
