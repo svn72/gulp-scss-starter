@@ -45,3 +45,37 @@ gulp.task("styles", () => {
         }))
         .on("end", browsersync.reload);
 });
+
+gulp.task("additionalStyles", () => {
+    return gulp.src(paths.additionalStyles.src)
+        .pipe(plumber())
+        .pipe(sass())
+        .pipe(autoprefixer({
+            cascade: false,
+            grid: true
+        }))
+        .pipe(cleanCSS({
+            format: 'beautify',
+            compatibility: "*",
+            level: {
+                1: {
+                    specialComments: 0,
+                    removeEmpty: true,
+                },
+                2: {
+                    mergeMedia: true,
+                    removeEmpty: true,
+                    removeDuplicateFontRules: true,
+                    removeDuplicateMediaBlocks: true,
+                    removeDuplicateRules: true,
+                    removeUnusedAtRules: false
+                }
+            }
+        }))
+        .pipe(plumber.stop())
+        .pipe(gulp.dest(paths.additionalStyles.dist))
+        .pipe(debug({
+            "title": "CSS blocks"
+        }))
+        .on("end", browsersync.reload);
+});
