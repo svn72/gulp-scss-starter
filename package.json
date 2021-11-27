@@ -1,10 +1,10 @@
 {
-    "name": "gulp-scss-starter",
+    "author": "Vladimir Stepanov",
     "description": "Frontend development with pleasure",
-    "author": "Andrey Gorokhov",
+    "name": "gulp-scss-starter",
     "repository": {
         "type": "git",
-        "url": "https://github.com/andreyalexeich/gulp-scss-starter.git"
+        "url": "https://github.com/svn72/gulp-scss-starter"
     },
     "license": "MIT",
     "scripts": {
