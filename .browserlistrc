@@ -1,3 +1,14 @@
-last 3 versions
+last 2 versions
 > 1%
-ie 9-11
+not IE 11
+Edge >= 16
+Firefox >= 54
+Chrome >= 58
+Safari >= 10.1
+Opera >= 44
+iOS >= 10.3
+Android >= 58
+OperaMobile >= 59
+ChromeAndroid >= 58
+FirefoxAndroid >= 54
+Samsung >= 6.2

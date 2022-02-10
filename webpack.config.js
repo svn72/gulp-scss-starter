@@ -1,18 +1,11 @@
 const path = require("path");
-const webpack = require("webpack");
+const {VueLoaderPlugin} = require('vue-loader');
 
 module.exports = {
-    plugins: [ 
-        new webpack.ProvidePlugin({ 
-            "jQuery": "jquery", 
-            "window.jQuery": "jquery", 
-            "jquery": "jquery", 
-            "window.jquery": "jquery", 
-            "$": "jquery", 
-            "window.$": "jquery" 
-        }) 
+    plugins: [
+        new VueLoaderPlugin(),
     ],
-    
+
     entry: {
         main: "./src/js/index.js",
     },
@@ -39,23 +32,43 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /.vue$/,
+                loader: 'vue-loader',
+            },
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: require.resolve("babel-loader"),
-                    query: {
-                        presets: [
-                            ["@babel/preset-env", { modules: false }]
-                        ]
-                    }
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        '@babel/preset-env'
+                    ]
                 }
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader",
+                ],
+            },
+            {
+                // css
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    "css-loader",
+                ]
             }
         ]
     },
 
     resolve: {
+        extensions: ['.js', '.vue'],
         alias: {
-            "%modules%": path.resolve(__dirname, "src/blocks/modules")
+            "%modules%": path.resolve(__dirname, "src/blocks/modules"),
+            'vue$': 'vue/dist/vue.esm.js'
         }
     }
 };
